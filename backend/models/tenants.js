@@ -17,11 +17,11 @@ const tenantSchema = new Schema ({
     contact: [
         {phone: [
             {business: {
-                type: Number,
+                type: String,
                 required: true
             },
             cell: {
-                type: Number,
+                type: String,
                 required: true
             }}
         ],

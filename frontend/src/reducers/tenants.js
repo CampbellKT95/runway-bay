@@ -7,7 +7,7 @@ export default (tenants = [], action) => {
         case "FETCH_ALL":
             return action.payload;
         case "CREATE":
-            return tenants
+            return [...tenants, action.payload];
         default:
             return tenants;
     }

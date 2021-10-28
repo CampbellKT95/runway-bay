@@ -12,4 +12,16 @@ export const getTenants = () => async (dispatch) => {
     } catch (error) {
         console.log(error.message);
     }
+};
+
+export const createTenant = (tenant) => async (dispatch) => {
+    try {
+        //makes an api request to backend
+        const { data } = await api.createTenant(tenant);
+
+        dispatch({type: "CREATE", payload: data});
+
+    } catch (error) {
+        console.log(error)
+    }
 }

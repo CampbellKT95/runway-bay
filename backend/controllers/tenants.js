@@ -1,4 +1,5 @@
 import Tenant from "../models/tenants.js";
+import mongoose from "mongoose";
 
 export const getTenants = async (req, res) => {
     try {
@@ -13,16 +14,19 @@ export const getTenants = async (req, res) => {
     }
 };
 
-export const createTenant = async (req, res) => {
+export const createTenant = (req, res) => {
     //with posts request, you have access to req.body
     const newTenantData = req.body;
 
     const newTenant = new Tenant(newTenantData);
 
-    try {
-        await newTenant.save();
+    console.log(newTenant);
+    // console.log(mongoose.connection.readyState);
 
-        //201 = successful creation
+    try {
+         newTenant.save();
+         console.log("Successfully saved new tenant")
+
         res.status(201).json(newTenant);
 
     } catch (error) {

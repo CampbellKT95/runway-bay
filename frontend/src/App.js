@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useEffect} from "react";
-import Login from "./components/Login/index";
+import Login from "./components/Login/index.jsx";
+import Form from "./components/Form/index.jsx";
 import {useDispatch} from "react-redux";
 import {getTenants} from "./actions/tenants";
 
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <>
-      <Login />
+      {/* <Login /> */}
+      <Form />
     </>
   );
 }
