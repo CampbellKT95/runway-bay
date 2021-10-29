@@ -1,1 +1,7 @@
-105:00
+Video #2:
+20:00
+
+will need to add a page to see all tenants, and allow for edit via clicking a button?
+
+use material ui checkboxes on form page
+    <Checkbox {...label} />

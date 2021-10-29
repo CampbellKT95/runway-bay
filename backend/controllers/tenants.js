@@ -36,6 +36,26 @@ export const createTenant = (req, res) => {
     }
 }
 
+//the parameter comes from the dynamic url (tenants/:id). rename id prop to _id
+export const updateTenant = async (req, res) => {
+    const {id : _id} = req.params;
+    const tenant = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send("No tenant with that id")
+    } else {
+
+        const updatedTenant = await Tenant.findByIdAndUpdate(_id, tenant, {new: true});
+
+        res.json(updatedTenant);
+    }
+}
+
+
+
+
+
+
 // to find a particular document **
 // Tenant.findOne({name: "Dave Pearce"})
 //     .then((result) => {
