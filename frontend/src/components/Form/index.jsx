@@ -76,10 +76,66 @@ const Form = ({currentId, setCurrentId}) => {
             dispatch(createTenant(tenantData));
             console.log("tenant created");
         }
+
+        clear();
+    }
+
+    const clear = () => {
+        setCurrentId(null);
+        setTenantData({
+        name: "", 
+        company: "",
+        contact: {
+            phone: {
+                business: "",
+                cell: ""
+            },
+            email: "",
+        },
+
+        location: {
+            address_1: "",
+            address_2: "",
+            city: "",
+            state: "",
+            zip: 0,
+            property: {
+                building: 0,
+                unit: 0,
+            }
+        },
+
+        comments: "",
+        lease_details: {
+            start_date: "",
+            end_date: "",
+            lease_length: 0,
+            signing: {
+                signing_date: "",
+                signing_payment: 0,
+            },
+
+            due_day: "",
+            monthly_amt: 0,
+            sales_tax: 0,
+            subtotal: 0,
+            total_paid: 0,
+            security: {
+                security_received: false,
+                security_amt: 0,
+                security_date_received: "",
+            },
+
+            last_month_security: false,
+            certificate_liability: false
+        }
+
+    })
     }
 
     return (
         <>
+        <h1>{`${currentId ? "Edit Tenant" : "Create New Tenant"}`}</h1>
         <form className="form-container">
             <div className="personal-info">
 
@@ -168,7 +224,9 @@ const Form = ({currentId, setCurrentId}) => {
 
             </div>
             <div>
-                <button className="btn" type="submit" onClick={handleSubmit}>submit</button>
+                <button className="btn" type="submit" onClick={handleSubmit}>
+                    {`${currentId ? "Edit" : "Create"}`}
+                </button>
             </div>
         </form>
         </>

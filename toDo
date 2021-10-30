@@ -1,10 +1,25 @@
 
+
 Video #2:
-28:00
+1:01:00
 
 
-Edit icon successfully refills content of form, except for phone: {
+*Edit icon successfully refills content of form, except for phone: {
     business, cell
     }
 
-Continue working on displaying tenant data
+*clear() at end of onsubmit does not clear fields with null, since setting it back to null does not clear the field for some reason
+
+
+should probably add a label to each input field, since repopulation will make it unclear what each input is about
+
+
+
+Things to do later on:
+    Set up react router ("/" being login, then going to a combo of form & tenants list)
+
+    Set up Auth
+
+    Set up automatically emailing (or text if possible) for when a lease hits 45 days left (and also when rent is due)
+
+**Add an attachment uploader to enable attaching of lease (in same video I have been watching)**

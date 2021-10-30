@@ -35,3 +35,14 @@ export const updateTenant = (id, tenant) => async (dispatch) => {
         console.log(error.message);
     }
 }
+
+export const deleteTenant = (id) => async (dispatch) => {
+    try {
+        await api.deleteTenant(id);
+
+        dispatch({type: "DELETE", payload: id});
+
+    } catch (error) {
+        console.log(error);
+    }
+}
