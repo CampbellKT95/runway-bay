@@ -1,19 +1,10 @@
-**issue with security_received. not casting to boolean (ie not successfully being converted to true or false, likely due to typo in value?)
-
-
-
-Delete current db entries, add fake data to check that I have full access
-    Will need to change around singltenant to remove array access and just focus on objects
-
-
-Edit input fields to allow for placement in model properly (currently does not accurately accept subfield like phone/cell within contact)
-    Maybe need to change state to mirror model?
-
-
 
 Video #2:
 28:00
 
 
-use material ui checkboxes on form page
-    <Checkbox {...label} />
+Edit icon successfully refills content of form, except for phone: {
+    business, cell
+    }
+
+Continue working on displaying tenant data

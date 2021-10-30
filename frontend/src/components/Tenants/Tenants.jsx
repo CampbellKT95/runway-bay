@@ -7,8 +7,6 @@ const Tenants = ({currentId, setCurrentId}) => {
 
     const tenants = useSelector((state) => state.tenants)
 
-    console.log("tenants", tenants)
-
     return (
         <>
             <h1>Tenants</h1>

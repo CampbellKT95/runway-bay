@@ -15,6 +15,7 @@ function App() {
     dispatch(getTenants());
   }, [dispatch])
 
+
   return (
     <>
       <Login />
