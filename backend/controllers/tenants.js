@@ -21,7 +21,6 @@ export const createTenant = (req, res) => {
     const newTenant = new Tenant(newTenantData);
 
     console.log(newTenant);
-    // console.log(mongoose.connection.readyState);
 
     try {
          newTenant.save();
@@ -50,17 +49,3 @@ export const updateTenant = async (req, res) => {
         res.json(updatedTenant);
     }
 }
-
-
-
-
-
-
-// to find a particular document **
-// Tenant.findOne({name: "Dave Pearce"})
-//     .then((result) => {
-//         console.log(result)
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     });

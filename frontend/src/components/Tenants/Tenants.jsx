@@ -7,14 +7,15 @@ const Tenants = ({currentId, setCurrentId}) => {
 
     const tenants = useSelector((state) => state.tenants)
 
-    console.log(tenants);
+    console.log("tenants", tenants)
 
     return (
         <>
             <h1>Tenants</h1>
+
             {tenants.map((tenant) => {
                 return <div>
-                    <SingleTenant key={tenant._id} tenant={tenant} 
+                    <SingleTenant key={tenant._id} tenant={[tenant]} 
                         currentId={currentId} setCurrentId={setCurrentId}
                     />
                 </div>

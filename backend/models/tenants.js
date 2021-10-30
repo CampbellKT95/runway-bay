@@ -14,7 +14,7 @@ const tenantSchema = new Schema ({
         required: true
     },
 
-    contact: [
+    contact: 
         {phone: [
             {business: {
                 type: String,
@@ -29,10 +29,9 @@ const tenantSchema = new Schema ({
         email: {
             type: String,
             required: true
-        }}
-    ],
+        }},
 
-    location: [
+    location: 
         {address_1: {
             type: String,
             required: true
@@ -53,24 +52,22 @@ const tenantSchema = new Schema ({
             type: Number,
             required: true
         },
-        property: [
+        property: 
             {building: {
                 type: [Number],
                 required: true
-            }}, 
-            {unit: {
+            }, 
+            unit: {
                 type: [Number],
                 required: true
-            }}
-        ]
-        }],
+            }}},
 
     comments: {
         type: String,
         required: false
     },
 
-    lease_details: [
+    lease_details: 
         {start_date: {
             type: String,
             required: true
@@ -83,50 +80,48 @@ const tenantSchema = new Schema ({
             type: Number,
             required: true
         },
-        signing: [
+        signing: 
             {signing_date: {
                 type: String,
                 required: true
             },
             signing_payment: {
-                type: Decimal128,
+                type: Number,
                 required: true
-            }}
-        ],
+            }},
         due_day: {
             type: Number,
             required: true
         }, 
         monthly_amt: {
-            type: Decimal128,
+            type: Number,
             required: true
         },
         sales_tax: {
-            type: Decimal128,
+            type: Number,
             required: true
         },
         subtotal: {
-            type: Decimal128,
+            type: Number,
             required: true
         },
         total_paid: {
-            type: Decimal128,
+            type: Number,
             required: false
         },
-        security: [
+        security: 
             {security_received: {
                 type: Boolean,
-                required: true
+                required: false
             },
             security_amt: {
-                type: Decimal128,
-                required: true
+                type: Number,
+                required: false
             },
             security_date_received: {
                 type: String,
                 required: false
-            }}
-        ],
+            }},
         last_month_security: {
             type: Boolean,
             required: true
@@ -135,7 +130,7 @@ const tenantSchema = new Schema ({
             type: Boolean,
             required: true
         }}
-    ]
+    
 });
 
 //parameter is singular of collections name

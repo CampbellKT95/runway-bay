@@ -8,6 +8,8 @@ export default (tenants = [], action) => {
             return action.payload;
         case "CREATE":
             return [...tenants, action.payload];
+        case "UPDATE":
+            return tenants.map((tenant) => tenant._id === action.payload._id ? action.payload : tenant);
         default:
             return tenants;
     }

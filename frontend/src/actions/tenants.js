@@ -25,3 +25,13 @@ export const createTenant = (tenant) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updateTenant = (id, tenant) => async (dispatch) => {
+    try {
+        const {data} = await api.updateTenant(id, tenant);
+
+        dispatch({type: "UPDATE", payload: data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}

@@ -1,99 +1,171 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from "react-redux";
-import {createTenant} from "../../actions/tenants";
+import { useSelector } from 'react-redux';
+import {createTenant, updateTenant} from "../../actions/tenants";
 import "./form.css";
 
-const Form = ({setCurrentId}) => {
+const Form = ({currentId, setCurrentId}) => {
 
-    const [subTotal, setSubtotal] = useState(0);
+    const tenant = useSelector((state) => currentId ? state.tenants.find((t) => t._id === currentId) : null);
 
     const [tenantData, setTenantData] = useState({
         name: "", 
         company: "",
-        phone: "",
-        cell: "",
-        email: "",
-        address_1: "",
-        address_2: "",
-        city: "",
-        state: "",
-        zip: 0,
-        building: 0,
-        unit: 0,
+        contact: {
+            phone: {
+                business: "",
+                cell: ""
+            },
+            email: "",
+        },
+
+        location: {
+            address_1: "",
+            address_2: "",
+            city: "",
+            state: "",
+            zip: null,
+            property: {
+                building: null,
+                unit: null,
+            }
+        },
+
         comments: "",
-        start_date: "",
-        end_date: "",
-        lease_length: 12,
-        signing_date: "",
-        rent_day: "",
-        monthly_payment: 0,
-        sales_tax: 0,
-        subtotal: 0,
-        total_paid: 0,
-        security_amount: 0,
-        security_date_received: ""
+        lease_details: {
+            start_date: "",
+            end_date: "",
+            lease_length: null,
+            signing: {
+                signing_date: "",
+                signing_payment: null,
+            },
+
+            due_day: "",
+            monthly_amt: null,
+            sales_tax: null,
+            subtotal: null,
+            total_paid: null,
+            security: {
+                security_received: false,
+                security_amt: null,
+                security_date_received: "",
+            },
+
+            last_month_security: false,
+            certificate_liability: false
+        }
+
     })
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (tenant) {
+            setTenantData(tenant);
+        }
+    }, [tenant])
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //dispatching newly created tenantData to backend
-        dispatch(createTenant(tenantData));
-
-        console.log("submitted");
+        if (currentId) {
+            dispatch(updateTenant(currentId, tenantData));
+            console.log("tenant updated");
+        } else {
+            dispatch(createTenant(tenantData));
+            console.log("tenant created");
+        }
     }
 
     return (
         <>
         <form className="form-container">
             <div className="personal-info">
-                <input placeholder="name" onChange={(e) => {setTenantData({...tenantData, name: e.target.value})}}/>
-                <input placeholder="company" onChange={(e) => {setTenantData({...tenantData, company: e.target.value})}}/>
-                <input placeholder="phone" onChange={(e) => {setTenantData({...tenantData, phone: e.target.value})}}/>
-                <input placeholder="cell" onChange={(e) => {setTenantData({...tenantData, cell: e.target.value})}}/>
-                <input placeholder="email" onChange={(e) => {setTenantData({...tenantData, email: e.target.value})}}/>
+
+                <input value={tenantData.name} placeholder="name" onChange={(e) => {setTenantData({...tenantData, name: e.target.value})}}/>
+
+                <input value={tenantData.company} placeholder="company" onChange={(e) => {setTenantData({...tenantData, company: e.target.value})}}/>
+
+                <input value={tenantData.contact.phone.business} placeholder="phone" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, business: e.target.value}}})}}/>
+
+                <input value={tenantData.contact.phone.cell} placeholder="cell" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, cell: e.target.value}}})}}/>
+
+                <input value={tenantData.contact.email} placeholder="email" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, email: e.target.value}})}} />
             </div>
+
             <div className="address-info">
-                <input placeholder="address-1" onChange={(e) => {setTenantData({...tenantData, address_1: e.target.value})}}/>
-                <input placeholder="address-2" onChange={(e) => {setTenantData({...tenantData, address_2: e.target.value})}}/>
-                <input placeholder="city" onChange={(e) => {setTenantData({...tenantData, city: e.target.value})}}/>
-                <input placeholder="state" onChange={(e) => {setTenantData({...tenantData, state: e.target.value})}}/>
-                <input placeholder="zip" onChange={(e) => {setTenantData({...tenantData, zip: e.target.value})}}/>
-                <input placeholder="building" onChange={(e) => {setTenantData({...tenantData, building: e.target.value})}}/>
-                <input placeholder="unit" onChange={(e) => {setTenantData({...tenantData, unit: e.target.value})}}/>
+                <input value={tenantData.location.address_1} placeholder="address-1" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_1: e.target.value}})}}/>
+
+                <input value={tenantData.location.address_2} placeholder="address-2" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_2: e.target.value}})}}/>
+
+                <input value={tenantData.location.city} placeholder="city" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, city: e.target.value}})}}/>
+
+                <input value={tenantData.location.state} placeholder="state" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, state: e.target.value}})}}/>
+
+                <input value={tenantData.location.zip} placeholder="zip" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, zip: e.target.value}})}}/>
+
+                <input value={tenantData.location.property.building} placeholder="building" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, building: e.target.value}}})}}/>
+
+                <input value={tenantData.location.property.unit} placeholder="unit" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, unit: e.target.value}}})}}/>
             </div>
+
             <div className="comment-section">
-                <textarea className="comments" placeholder="comments" cols="30" rows="4" onChange={(e) => {setTenantData({...tenantData, comments: e.target.value})}}/>
+                <textarea value={tenantData.comments} className="comments" placeholder="comments" cols="30" rows="4" onChange={(e) => {setTenantData({...tenantData, comments: e.target.value})}}/>
             </div>
             <div className="lease-info">
-                <input placeholder="start-date" onChange={(e) => {setTenantData({...tenantData, start_date: e.target.value})}}/>
-                <input placeholder="end-date" onChange={(e) => {setTenantData({...tenantData, end_date: e.target.value})}}/>
-                <input placeholder="lease-length" onChange={(e) => {setTenantData({...tenantData, lease_length: e.target.value})}}/>
-                <input placeholder="signing-date" onChange={(e) => {setTenantData({...tenantData, signing_date: e.target.value})}}/>
-                <input placeholder="signing-payment" onChange={(e) => {setTenantData({...tenantData, signing_payment: e.target.value})}}/>
-                <input placeholder="rent-day" onChange={(e) => {setTenantData({...tenantData, rent_day: e.target.value})}}/>
-                <input placeholder="monthly-payment" onChange={(e) => {setTenantData({...tenantData, monthly_payment: e.target.value})}}/>
-                <input placeholder="sales-tax" onChange={(e) => {setTenantData({...tenantData, sales_tax: e.target.value})}}/>
-                <h4 className="subtotal">{`Subtotal: ${subTotal}`}</h4>
-                <input placeholder="total-paid" onChange={(e) => {setTenantData({...tenantData, total_paid: e.target.value})}}/>
+                <input value={tenantData.lease_details.start_date} placeholder="start-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, start_date: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.end_date} placeholder="end-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, end_date: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.lease_length} placeholder="lease-length" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, lease_length: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.signing.signing_date} placeholder="signing-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_date: e.target.value}}})}}/>
+
+                <input value={tenantData.lease_details.signing.signing_payment} placeholder="signing-payment" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_payment: e.target.value}}})}}/>
+
+                <input value={tenantData.lease_details.due_day} placeholder="rent-day" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, due_day: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.monthly_amt} placeholder="monthly-payment" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, monthly_amt: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.sales_tax} placeholder="sales-tax" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, sales_tax: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.subtotal} placeholder="subtotal" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, subtotal: e.target.value}})}}/>
+
+                <input value={tenantData.lease_details.total_paid} placeholder="total-paid" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, total_paid: e.target.value}})}}/>
             </div>
+
             <div className="deposit-info">
-                <input placeholder="security-amount" onChange={(e) => {setTenantData({...tenantData, security_amount: e.target.value})}}/>
-                <input placeholder="date-security-received" onChange={(e) => {setTenantData({...tenantData, security_date_received: e.target.value})}}/>
+                <input value={tenantData.lease_details.security.security_amt} placeholder="security-amount" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_amt: e.target.value}}})}}/>
+
+                <input value={tenantData.lease_details.security.security_date_received} placeholder="date-security-received" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
+
+
+            {/* current issue with 'casting to string' */}
                 <div className="security-check">
-                    <input type="checkbox" name="security-deposit" />
+                    <input type="checkbox" name="security-deposit" 
+                    value={tenantData.lease_details.security.security_received}
+                    onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_received: true}}})}}/>
                     <label for="security-deposit">Security Deposit</label>
                 </div>
+            {/* current issue with "casting to string" */}
+
+
                 <div className="last-check">
-                    <input type="checkbox" name="last-month" />
+                    <input type="checkbox" name="last-month" 
+                    value={tenantData.lease_details.last_month_security}
+                    onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, last_month_security: true}})}}/>
                     <label for="last-month">Last Month's</label>
                 </div>
+
                 <div className="liability-check">
-                    <input type="checkbox" name="certificate-of-liability" />
+                    <input type="checkbox" name="certificate-of-liability" value={tenantData.lease_details.certificate_liability}
+                    onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, certificate_liability: true}})}}/>
+                    <label for="last-month">Last Month's</label>
+
                     <label for="certificate-of-liability">Certificate of Liability</label>
                 </div>
+
             </div>
             <div>
                 <button className="btn" type="submit" onClick={handleSubmit}>submit</button>
