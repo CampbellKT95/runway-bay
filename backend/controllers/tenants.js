@@ -49,20 +49,3 @@ export const updateTenant = async (req, res) => {
         res.json(updatedTenant);
     }
 }
-
-export const deleteTenant = async (req, res) => {
-    const {id} = req.params;
-    console.log("req", req)
-    console.log("id", id)
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send("No tenant with that id")
-
-    } else {
-
-        await Tenant.findByIdAndRemove(id);
-
-        return res.json({message: "Tenant deleted successfully"});
-
-    }
-}

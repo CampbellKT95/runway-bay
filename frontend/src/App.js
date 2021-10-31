@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getTenants());
-  }, [currentId, dispatch])
+  }, [dispatch])
 
 
   return (

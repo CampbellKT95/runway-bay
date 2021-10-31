@@ -35,6 +35,7 @@ export const updateTenant = (id, tenant) => async (dispatch) => {
     } catch (error) {
         console.log(error.message);
     }
+<<<<<<< HEAD
 }
 
 export const deleteTenant = (id) => async (dispatch) => {
@@ -46,4 +47,6 @@ export const deleteTenant = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
+=======
+>>>>>>> parent of 911c7ee (finished delete functionality)
 }
