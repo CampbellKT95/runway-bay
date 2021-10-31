@@ -5,13 +5,17 @@ import mongoose from "mongoose";
 import Tenant from "./models/tenants.js";
 import tenantRoutes from "./routes/tenants.js";
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
-dotenv.config();
 app.use(cors());
 
 app.use("/tenants", tenantRoutes);
+
+app.get("/", (req, res) => {
+    res.send("Loading...")
+})
 
 //process.env to acces .env file info
 const port = process.env.PORT || 5000;

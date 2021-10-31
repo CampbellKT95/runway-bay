@@ -1,16 +1,15 @@
-//reducer(state, action). since state will always be tenants, can simply add it instead of state
 
+import {FETCH_ALL, CREATE, UPDATE, DELETE} from "../constants/actionTypes";
 
-//can export the function which will be used in index.js reducers
 export default (tenants = [], action) => {
     switch(action.type) {
-        case "FETCH_ALL":
+        case FETCH_ALL:
             return action.payload;
-        case "CREATE":
+        case CREATE:
             return [...tenants, action.payload];
-        case "UPDATE":
+        case UPDATE:
             return tenants.map((tenant) => tenant._id === action.payload._id ? action.payload : tenant);
-        case "DELETE":
+        case DELETE:
             return tenants.filter((tenant) => tenant._id !== action.payload);
         default:
             return tenants;
