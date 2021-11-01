@@ -7,6 +7,7 @@ import {useHistory, useLocation} from "react-router-dom";
 import dotenv from "dotenv";
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Auth = ({user, setUser}) => {
     const dispatch = useDispatch();
@@ -80,7 +81,7 @@ const Auth = ({user, setUser}) => {
                             <button className="google-btn" 
                                 onClick={renderProps.onClick} 
                                 disabled={renderProps.disabled}>
-                                Google Sign In
+                                <GoogleIcon /> Sign On
                             </button>
                         )}
                         onSuccess={googleSuccess}

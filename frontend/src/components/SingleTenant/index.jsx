@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import "./singletenant.css";
+import "./styles.css";
 import {useDispatch} from "react-redux";
 import {deleteTenant} from "../../actions/tenants";
 
@@ -17,25 +17,27 @@ const SingleTenant = ({...props}) => {
     
     return (
         <div className="tenant">
-            <h1>{receivedProp[0].name}</h1>
+            <h1 className="tenant-name">{receivedProp[0].name}</h1>
+
+            <h4 className="rent">{`Rent: $${receivedProp[0].lease_details.monthly_amt} on 
+            ${receivedProp[0].lease_details.due_day}`}</h4>
 
                 {receivedProp[0].location.property.building.map((item) => {
-                return <h4>building: {item}</h4>
+                return <p className="property-building">Building: {item}</p>
             })}
 
             {receivedProp[0].location.property.unit.map((item) => {
-                return <h4>unit: {item}</h4>
+                return <p className="property-unit">Unit: {item}</p>
             })}
 
 
-            <p>{`Rent: $${receivedProp[0].lease_details.monthly_amt} on 
-            ${receivedProp[0].lease_details.due_day}`}</p>
+
             
-            <button onClick={() => props.setCurrentId(receivedProp[0]._id)}>
-                <ModeEditIcon />
+            <button onClick={() => props.setCurrentId(receivedProp[0]._id)} className="tenant-btn">
+                <ModeEditIcon className="icons" />
             </button>
-            <button onClick={() => dispatch(deleteTenant(receivedProp[0]._id))}>
-                <DeleteIcon />
+            <button onClick={() => dispatch(deleteTenant(receivedProp[0]._id))} className="tenant-btn">
+                <DeleteIcon className="icons" />
             </button>
         </div>
     )

@@ -9,6 +9,8 @@ Edit icon successfully refills content of form, except for phone: {
 
 for getting labels to be a part of input box: https://stackoverflow.com/questions/45150781/placing-label-text-inside-the-border-of-a-text-input
 
+make inputs within Form its own component, and pass specific information as a prop? May be too tedious and not worthwhile ...
+
 
 ## FINALE ##
 

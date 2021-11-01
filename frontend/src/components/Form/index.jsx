@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch} from "react-redux";
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 import {createTenant, updateTenant} from "../../actions/tenants";
-import "./form.css";
+import "./styles.css";
 
 const Form = ({currentId, setCurrentId}) => {
 
@@ -135,7 +135,10 @@ const Form = ({currentId, setCurrentId}) => {
 
     return (
         <>
-        <h1>{`${currentId ? "Edit Tenant" : "Create New Tenant"}`}</h1>
+        <h1 className="create-title">{`${currentId ? "Edit Tenant" : "Create New Tenant"}`}</h1>
+
+        <Link to="/tenants"><button className="all-tenants-btn">Back</button></Link>
+
         <form className="form-container">
             <div className="personal-info">
 
@@ -217,7 +220,6 @@ const Form = ({currentId, setCurrentId}) => {
                 <div className="liability-check">
                     <input type="checkbox" name="certificate-of-liability" value={tenantData.lease_details.certificate_liability}
                     onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, certificate_liability: true}})}}/>
-                    <label for="last-month">Last Month's</label>
 
                     <label for="certificate-of-liability">Certificate of Liability</label>
                 </div>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import {useSelector} from "react-redux";
 import {useHistory, Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import SingleTenant from "../SingleTenant/index"
+import SingleTenant from "../SingleTenant/index";
+import "./styles.css";
 
 
 const Tenants = ({currentId, setCurrentId, setUser}) => {
@@ -21,17 +22,20 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
 
     return (
         <>
-            <h1>Tenants</h1>
+            <h1 className="tenants-title">All Tenants</h1>
 
-            {tenants.map((tenant) => {
-                return <div>
-                    <SingleTenant key={tenant._id} tenant={[tenant]} 
-                        currentId={currentId} setCurrentId={setCurrentId}
-                    />
-                </div>
-            })}
-            <Link to="/form"><button>Create New</button></Link>
-            <button onClick={logout}>Logout</button>
+            <Link to="/form"><button className="tenants-btn">Create New</button></Link>
+            <button onClick={logout} className="tenants-btn">Logout</button>
+
+            <div className="tenants-container">
+                {tenants.map((tenant) => {
+                    return <div>
+                        <SingleTenant key={tenant._id} tenant={[tenant]} 
+                            currentId={currentId} setCurrentId={setCurrentId}
+                        />
+                    </div>
+                })}
+            </div>
         </>
     )
 }
