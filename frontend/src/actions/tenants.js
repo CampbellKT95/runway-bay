@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, UPDATE, DELETE} from "../constants/actionTypes";
+import {FETCH_ALL, CREATE, UPDATE, DELETE} from "../constants/actionTypes.js";
 import * as api from "../api";
 
 //the async comes from thunk, for async logic

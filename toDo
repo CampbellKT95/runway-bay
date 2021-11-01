@@ -1,10 +1,18 @@
+Video #3:
+1:16:00
 
-Video #2:
-28:00
 
 
 Edit icon successfully refills content of form, except for phone: {
     business, cell
     }
 
-Continue working on displaying tenant data
+for getting labels to be a part of input box: https://stackoverflow.com/questions/45150781/placing-label-text-inside-the-border-of-a-text-input
+
+
+## FINALE ##
+
+Re-deply backend to heroku and frontend to netlify
+
+
+

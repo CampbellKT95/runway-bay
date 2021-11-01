@@ -1,5 +1,5 @@
 
-import {FETCH_ALL, CREATE, UPDATE, DELETE} from "../constants/actionTypes";
+import {FETCH_ALL, CREATE, UPDATE, DELETE} from "../constants/actionTypes.js";
 
 export default (tenants = [], action) => {
     switch(action.type) {

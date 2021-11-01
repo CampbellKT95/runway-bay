@@ -1,7 +1,6 @@
 import axios from "axios";
 
-//url that points to our backend route
-const url = "https://runway-bay.herokuapp.com/tenants" 
+const url = "http://localhost:5000/tenants";
 // "https://runway-bay.herokuapp.com/tenants"
 // "http://localhost:5000/tenants";
 
