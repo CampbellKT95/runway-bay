@@ -1,15 +1,18 @@
 Video #3:
-1:16:00
+1:39:00
 
+add secret to controllers/user.js, second parameter of const token
+
+
+**Currently anyone can access via Google. How to restrict access?**
 
 
 Edit icon successfully refills content of form, except for phone: {
     business, cell
     }
 
-for getting labels to be a part of input box: https://stackoverflow.com/questions/45150781/placing-label-text-inside-the-border-of-a-text-input
-
-make inputs within Form its own component, and pass specific information as a prop? May be too tedious and not worthwhile ...
+Add button to upload lease document for each tenant 
+    (should also probably add a button on <SingleTenant /> to access it)
 
 
 ## FINALE ##

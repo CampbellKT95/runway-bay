@@ -5,6 +5,7 @@ import {GoogleLogin} from "react-google-login";
 import {useDispatch} from "react-redux";
 import {useHistory, useLocation} from "react-router-dom";
 import dotenv from "dotenv";
+import {signin} from "../../actions/auth";
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -26,7 +27,6 @@ const Auth = ({user, setUser}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-
     const handleChange = (e) => {
         let chosenField = e.target
         if (chosenField.placeholder === "Username") {
@@ -36,7 +36,11 @@ const Auth = ({user, setUser}) => {
         }
     }
 
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(signin(username, password, history))
+    }
 
     const googleSuccess = async (res) => {
         console.log(res);
@@ -67,9 +71,9 @@ const Auth = ({user, setUser}) => {
                 <h2 className="login-title">Runway Bay</h2>
                 <form className="login-form">
                     <input type="text" placeholder="Username" value={username}
-                        onChange={handleChange} autoFocus
+                        onChange={handleChange} name="username" autoFocus
                     />
-                    <input type="password" placeholder="Password" value={password} onChange={handleChange}
+                    <input type="password" placeholder="Password" value={password} onChange={handleChange} name="password"
                     />
 
                     <Link to="/auth" className="login-btn"><button type="submit" onSubmit={handleSubmit}>Login</button></Link>

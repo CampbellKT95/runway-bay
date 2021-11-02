@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Tenant from "./models/tenants.js";
 import tenantRoutes from "./routes/tenants.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/tenants", tenantRoutes);
+app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
     res.send("Loading...")
