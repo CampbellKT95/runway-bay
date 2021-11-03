@@ -10,13 +10,13 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 
+const initialState = {username: "", password: ""}
+
 const Auth = ({user, setUser}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
     dotenv.config();
-
-    console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
 
     useEffect(() => {
         const token = user?.token;
@@ -24,22 +24,21 @@ const Auth = ({user, setUser}) => {
         setUser(JSON.parse(localStorage.getItem("profile")));
     }, [location])
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [formData, setFormData] = useState(initialState);
 
     const handleChange = (e) => {
         let chosenField = e.target
         if (chosenField.placeholder === "Username") {
-            setUsername(e.target.value);
+            setFormData({...formData, username: e.target.value});
         } else {
-            setPassword(e.target.value)
+            setFormData({...formData, password: e.target.value})
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(signin(username, password, history))
+        dispatch(signin(formData, history))
     }
 
     const googleSuccess = async (res) => {
@@ -70,13 +69,13 @@ const Auth = ({user, setUser}) => {
             <section className="login-background">
                 <h2 className="login-title">Runway Bay</h2>
                 <form className="login-form">
-                    <input type="text" placeholder="Username" value={username}
+                    <input type="text" placeholder="Username" value={formData.username}
                         onChange={handleChange} name="username" autoFocus
                     />
-                    <input type="password" placeholder="Password" value={password} onChange={handleChange} name="password"
+                    <input type="password" placeholder="Password" value={formData.password} onChange={handleChange} name="password"
                     />
 
-                    <Link to="/auth" className="login-btn"><button type="submit" onSubmit={handleSubmit}>Login</button></Link>
+                    <button type="submit" onSubmit={handleSubmit}>Login</button>
 
                     <GoogleLogin 
                         clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}

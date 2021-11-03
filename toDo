@@ -1,23 +1,19 @@
 Video #3:
-1:39:00
+2:05:00
 
-add secret to controllers/user.js, second parameter of const token
+Try restarting the video, looking for a setup for header
+issues with api in frontend (why req.headers.auth isn't working)
+May be that the auth.js in actions isn't properly receiving & sending the req.
 
+###################
+
+Add secret to controllers/user.js, second parameter of const token
 
 **Currently anyone can access via Google. How to restrict access?**
 
+Add button to upload lease document for each tenant
+(should also probably add a button on <SingleTenant /> to access it)
 
-Edit icon successfully refills content of form, except for phone: {
-    business, cell
-    }
-
-Add button to upload lease document for each tenant 
-    (should also probably add a button on <SingleTenant /> to access it)
-
-
-## FINALE ##
+## FINALE
 
 Re-deply backend to heroku and frontend to netlify
-
-
-

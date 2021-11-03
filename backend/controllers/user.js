@@ -3,10 +3,15 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
 export const signin = async (req, res) => {
+
+    console.log(req)
+    
     const {username, password} = req.body;
 
     try {
         const existingUser = await User.findOne({username});
+
+        console.log(existingUser)
 
         if (!existingUser) {
             return res.status(404).json({message: "User does not exist. Please try again."})
@@ -28,3 +33,4 @@ export const signin = async (req, res) => {
         res.status(500).json({message: "Something went wrong."})
     }
 }
+

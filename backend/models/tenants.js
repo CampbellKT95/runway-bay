@@ -15,7 +15,7 @@ const tenantSchema = new Schema ({
     },
 
     contact: 
-        {phone: [
+        {phone: 
             {business: {
                 type: String,
                 required: true
@@ -23,8 +23,7 @@ const tenantSchema = new Schema ({
             cell: {
                 type: String,
                 required: true
-            }}
-        ],
+            }},
 
         email: {
             type: String,

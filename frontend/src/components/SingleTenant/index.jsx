@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import "./styles.css";
 import {useDispatch} from "react-redux";
 import {deleteTenant} from "../../actions/tenants";
+import {Link} from "react-router-dom";
 
 const SingleTenant = ({...props}) => {
     const dispatch = useDispatch();
@@ -33,9 +34,10 @@ const SingleTenant = ({...props}) => {
 
 
             
-            <button onClick={() => props.setCurrentId(receivedProp[0]._id)} className="tenant-btn">
+            <Link to="/form"><button onClick={() => props.setCurrentId(receivedProp[0]._id)} className="tenant-btn">
                 <ModeEditIcon className="icons" />
-            </button>
+            </button></Link>
+
             <button onClick={() => dispatch(deleteTenant(receivedProp[0]._id))} className="tenant-btn">
                 <DeleteIcon className="icons" />
             </button>

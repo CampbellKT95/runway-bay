@@ -137,7 +137,9 @@ const Form = ({currentId, setCurrentId}) => {
         <>
         <h1 className="create-title">{`${currentId ? "Edit Tenant" : "Create New Tenant"}`}</h1>
 
-        <Link to="/tenants"><button className="all-tenants-btn">Back</button></Link>
+        <Link to="/tenants"><button className="all-tenants-btn" onClick={() => {clear()}}>
+            Back
+        </button></Link>
 
         <form className="form-container">
             <div className="personal-info">
@@ -199,19 +201,21 @@ const Form = ({currentId, setCurrentId}) => {
 
                 <input value={tenantData.lease_details.security.security_date_received} placeholder="date-security-received" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
 
-
-            {/* current issue with 'casting to string' */}
                 <div className="security-check">
-                    <input type="checkbox" name="security-deposit" 
+                    <input type="checkbox" name="security-deposit"
+                    
+                    checked={tenantData.lease_details.security.security_received ? "true" : false}
+
                     value={tenantData.lease_details.security.security_received}
                     onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_received: true}}})}}/>
                     <label for="security-deposit">Security Deposit</label>
                 </div>
-            {/* current issue with "casting to string" */}
-
 
                 <div className="last-check">
                     <input type="checkbox" name="last-month" 
+
+                    checked={tenantData.lease_details.last_month_security ? "true" : false}
+
                     value={tenantData.lease_details.last_month_security}
                     onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, last_month_security: true}})}}/>
                     <label for="last-month">Last Month's</label>
@@ -219,6 +223,9 @@ const Form = ({currentId, setCurrentId}) => {
 
                 <div className="liability-check">
                     <input type="checkbox" name="certificate-of-liability" value={tenantData.lease_details.certificate_liability}
+
+                    checked={tenantData.lease_details.certificate_liability ? "true" : false}
+
                     onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, certificate_liability: true}})}}/>
 
                     <label for="certificate-of-liability">Certificate of Liability</label>
@@ -226,9 +233,9 @@ const Form = ({currentId, setCurrentId}) => {
 
             </div>
             <div>
-                <button className="btn" type="submit" onClick={handleSubmit}>
+                <Link to="/tenants"><button className="btn" type="submit" onClick={handleSubmit}>
                     {`${currentId ? "Edit" : "Create"}`}
-                </button>
+                </button></Link>
             </div>
         </form>
         </>

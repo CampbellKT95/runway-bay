@@ -1,9 +1,11 @@
 import {AUTH} from "../constants/actionTypes.js";
 import * as api from "../api";
 
-export const signin = (username, password, history) => async (dispatch) => {
+export const signin = (formData, history) => async (dispatch) => {
     try {
-        //login
+        const {data} = await api.signIn(formData);
+
+        dispatch({type: AUTH, data})
 
         history.push("/tenants")
 
