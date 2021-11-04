@@ -28,7 +28,7 @@ const Auth = ({user, setUser}) => {
 
     const handleChange = (e) => {
         let chosenField = e.target
-        if (chosenField.placeholder === "Username") {
+        if (chosenField.name === "username") {
             setFormData({...formData, username: e.target.value});
         } else {
             setFormData({...formData, password: e.target.value})
@@ -42,7 +42,6 @@ const Auth = ({user, setUser}) => {
     }
 
     const googleSuccess = async (res) => {
-        console.log(res);
 
         const result = res?.profileObj;
         const token = res?.tokenId;
@@ -68,14 +67,14 @@ const Auth = ({user, setUser}) => {
         <>
             <section className="login-background">
                 <h2 className="login-title">Runway Bay</h2>
-                <form className="login-form">
+                <form className="login-form" onSubmit={handleSubmit}>
                     <input type="text" placeholder="Username" value={formData.username}
                         onChange={handleChange} name="username" autoFocus
                     />
                     <input type="password" placeholder="Password" value={formData.password} onChange={handleChange} name="password"
                     />
 
-                    <button type="submit" onSubmit={handleSubmit}>Login</button>
+                    <button type="submit">Login</button>
 
                     <GoogleLogin 
                         clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}

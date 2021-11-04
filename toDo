@@ -1,15 +1,9 @@
-Video #3:
-2:05:00
-
-Try restarting the video, looking for a setup for header
-issues with api in frontend (why req.headers.auth isn't working)
-May be that the auth.js in actions isn't properly receiving & sending the req.
+Under reducers, the AUTH case is saving a blank profile
+Perhaps the actions/auth dispatch is not reaching the reducer?
 
 ###################
 
-Add secret to controllers/user.js, second parameter of const token
-
-**Currently anyone can access via Google. How to restrict access?**
+Place Google Auth code in an extra folder & add to .gitignore
 
 Add button to upload lease document for each tenant
 (should also probably add a button on <SingleTenant /> to access it)

@@ -1,6 +1,13 @@
 import axios from "axios";
 
-const API = axios.create({baseURL: "http://localhost:5000/" })
+const API = axios.create({baseURL: "http://localhost:5000" })
+
+API.interceptors.request.use((req) => {
+    if (localStorage.getItem("profile")) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`;
+    }
+    return req;
+})
 
 export const fetchTenants = () => API.get("/tenants");
 
@@ -10,9 +17,11 @@ export const updateTenant = (id, updatedTenant) => API.patch(`/tenants/${id}`, u
 
 export const deleteTenant = (id) => API.delete(`$tenants/${id}`); 
 
-export const signIn = (formData) => {
-    return API.post("/users/signin", formData)   
-}
+export const signIn = (formData) => API.post("/users/signin", formData)   
+
+
+
+
 
 // const url = "http://localhost:5000/tenants";
 // "https://runway-bay.herokuapp.com/tenants"
