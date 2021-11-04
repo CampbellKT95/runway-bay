@@ -1,5 +1,6 @@
-Under reducers, the AUTH case is saving a blank profile
-Perhaps the actions/auth dispatch is not reaching the reducer?
+Token is now successfully saved, but I have to refresh to see all tenants once I have been pushed to /tenants
+    I think video covers this issue.
+
 
 ###################
 
