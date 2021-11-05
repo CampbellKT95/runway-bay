@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import FileBase from "react-file-base64";
 import {createTenant, updateTenant} from "../../actions/tenants";
 import "./styles.css";
+import Contact from "../Contact/index";
 
 const Form = ({currentId, setCurrentId}) => {
 
@@ -54,7 +56,8 @@ const Form = ({currentId, setCurrentId}) => {
 
             last_month_security: false,
             certificate_liability: false
-        }
+        },
+        leaseFile: ""
 
     })
 
@@ -129,7 +132,8 @@ const Form = ({currentId, setCurrentId}) => {
 
             last_month_security: false,
             certificate_liability: false
-        }
+        },
+        leaseFile: ""
 
     })}
 
@@ -144,62 +148,87 @@ const Form = ({currentId, setCurrentId}) => {
         <form className="form-container">
             <div className="personal-info">
 
-                <input value={tenantData.name} placeholder="name" onChange={(e) => {setTenantData({...tenantData, name: e.target.value})}}/>
+                <label className="name-label">Name</label>
+                <input value={tenantData.name} onChange={(e) => {setTenantData({...tenantData, name: e.target.value})}}/>
 
-                <input value={tenantData.company} placeholder="company" onChange={(e) => {setTenantData({...tenantData, company: e.target.value})}}/>
+                <label className="company-label">Company</label>
+                <input value={tenantData.company} onChange={(e) => {setTenantData({...tenantData, company: e.target.value})}}/>
 
-                <input value={tenantData.contact.phone.business} placeholder="phone" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, business: e.target.value}}})}}/>
+                <label className="phone-label">Phone</label>
+                <input value={tenantData.contact.phone.business} onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, business: e.target.value}}})}}/>
 
-                <input value={tenantData.contact.phone.cell} placeholder="cell" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, cell: e.target.value}}})}}/>
+                <label className="cell-label">Cell</label>
+                <input value={tenantData.contact.phone.cell} onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, phone: {...tenantData.contact.phone, cell: e.target.value}}})}}/>
 
-                <input value={tenantData.contact.email} placeholder="email" onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, email: e.target.value}})}} />
+                <label className="email-label">Email</label>
+                <input value={tenantData.contact.email} onChange={(e) => {setTenantData({...tenantData, contact: {...tenantData.contact, email: e.target.value}})}} />
             </div>
 
             <div className="address-info">
-                <input value={tenantData.location.address_1} placeholder="address-1" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_1: e.target.value}})}}/>
+                <label className="address-1-label">Address 1</label>
+                <input value={tenantData.location.address_1} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_1: e.target.value}})}}/>
 
-                <input value={tenantData.location.address_2} placeholder="address-2" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_2: e.target.value}})}}/>
+                <label className="address-2-label">Address 2</label>
+                <input value={tenantData.location.address_2} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, address_2: e.target.value}})}}/>
 
-                <input value={tenantData.location.city} placeholder="city" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, city: e.target.value}})}}/>
+                <label className="city-label">City</label>
+                <input value={tenantData.location.city} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, city: e.target.value}})}}/>
 
-                <input value={tenantData.location.state} placeholder="state" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, state: e.target.value}})}}/>
+                <label className="state-label">State</label>
+                <input value={tenantData.location.state} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, state: e.target.value}})}}/>
 
-                <input value={tenantData.location.zip} placeholder="zip" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, zip: e.target.value}})}}/>
+                <label className="zip-label">Zip</label>
+                <input value={tenantData.location.zip} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, zip: e.target.value}})}}/>
 
-                <input value={tenantData.location.property.building} placeholder="building" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, building: e.target.value}}})}}/>
+                <label className="building-label">Building</label>
+                <input value={tenantData.location.property.building} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, building: e.target.value}}})}}/>
 
-                <input value={tenantData.location.property.unit} placeholder="unit" onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, unit: e.target.value}}})}}/>
+                <label className="unit-label">Unit</label>
+                <input value={tenantData.location.property.unit} onChange={(e) => {setTenantData({...tenantData, location: {...tenantData.location, property: {...tenantData.location.property, unit: e.target.value}}})}}/>
             </div>
 
             <div className="comment-section">
-                <textarea value={tenantData.comments} className="comments" placeholder="comments" cols="30" rows="4" onChange={(e) => {setTenantData({...tenantData, comments: e.target.value})}}/>
+                <label className="comments-label">Comments</label>
+                <textarea value={tenantData.comments} className="comments"  cols="30" rows="4" onChange={(e) => {setTenantData({...tenantData, comments: e.target.value})}}/>
             </div>
             <div className="lease-info">
-                <input value={tenantData.lease_details.start_date} placeholder="start-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, start_date: e.target.value}})}}/>
+                <label className="start-date-label">Start Date</label>
+                <input value={tenantData.lease_details.start_date} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, start_date: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.end_date} placeholder="end-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, end_date: e.target.value}})}}/>
+                <label className="end-date-label">End Date</label>
+                <input value={tenantData.lease_details.end_date} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, end_date: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.lease_length} placeholder="lease-length" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, lease_length: e.target.value}})}}/>
+                <label className="lease-length-label">Lease Length</label>
+                <input value={tenantData.lease_details.lease_length} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, lease_length: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.signing.signing_date} placeholder="signing-date" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_date: e.target.value}}})}}/>
+                <label className="signing-date-label">Signing Date</label>
+                <input value={tenantData.lease_details.signing.signing_date} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_date: e.target.value}}})}}/>
 
-                <input value={tenantData.lease_details.signing.signing_payment} placeholder="signing-payment" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_payment: e.target.value}}})}}/>
+                <label className="signing-payment-label">Signing Payment</label>
+                <input value={tenantData.lease_details.signing.signing_payment} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_payment: e.target.value}}})}}/>
+   
+                <label className="rent-due-label">Rent Due</label>
+                <input value={tenantData.lease_details.due_day} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, due_day: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.due_day} placeholder="rent-day" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, due_day: e.target.value}})}}/>
+                <label className="monthly-amt-label">Monthly Payment</label>
+                <input value={tenantData.lease_details.monthly_amt} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, monthly_amt: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.monthly_amt} placeholder="monthly-payment" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, monthly_amt: e.target.value}})}}/>
+                <label className="sales-tax-label">Sales Tax</label>
+                <input value={tenantData.lease_details.sales_tax} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, sales_tax: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.sales_tax} placeholder="sales-tax" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, sales_tax: e.target.value}})}}/>
+                <label className="subtotal-label">Subtotal</label>
+                <input value={tenantData.lease_details.subtotal} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, subtotal: e.target.value}})}}/>
 
-                <input value={tenantData.lease_details.subtotal} placeholder="subtotal" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, subtotal: e.target.value}})}}/>
-
-                <input value={tenantData.lease_details.total_paid} placeholder="total-paid" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, total_paid: e.target.value}})}}/>
+                <label className="total-paid-label">Total Paid</label>
+                <input value={tenantData.lease_details.total_paid} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, total_paid: e.target.value}})}}/>
             </div>
 
             <div className="deposit-info">
-                <input value={tenantData.lease_details.security.security_amt} placeholder="security-amount" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_amt: e.target.value}}})}}/>
+                <label className="security-amount-label">Amount</label>
+                <input value={tenantData.lease_details.security.security_amt} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_amt: e.target.value}}})}}/>
 
-                <input value={tenantData.lease_details.security.security_date_received} placeholder="date-security-received" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
+                <label className="date-security-received-label">Date Received</label>
+                <input value={tenantData.lease_details.security.security_date_received} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
 
                 <div className="security-check">
                     <input type="checkbox" name="security-deposit"
@@ -208,7 +237,7 @@ const Form = ({currentId, setCurrentId}) => {
 
                     value={tenantData.lease_details.security.security_received}
                     onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_received: true}}})}}/>
-                    <label for="security-deposit">Security Deposit</label>
+                    <label for="security-deposit">Deposit</label>
                 </div>
 
                 <div className="last-check">
@@ -230,6 +259,13 @@ const Form = ({currentId, setCurrentId}) => {
 
                     <label for="certificate-of-liability">Certificate of Liability</label>
                 </div>
+                <div>
+                    <FileBase 
+                        type="file"
+                        multiple={false}
+                        onDone={({base64}) => setTenantData({ ...tenantData, leaseFile: base64})}
+                    />
+                </div>
 
             </div>
             <div>
@@ -238,6 +274,7 @@ const Form = ({currentId, setCurrentId}) => {
                 </button></Link>
             </div>
         </form>
+        <Contact />
         </>
     )
 }

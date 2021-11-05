@@ -128,7 +128,11 @@ const tenantSchema = new Schema ({
         certificate_liability: {
             type: Boolean,
             required: true
-        }}
+        }},
+    leaseFile: {
+        type: String,
+        required: true
+    }
     
 });
 

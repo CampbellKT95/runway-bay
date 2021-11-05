@@ -15,11 +15,9 @@ export const createTenant = (newTenant) => API.post("/tenants", newTenant);
 
 export const updateTenant = (id, updatedTenant) => API.patch(`/tenants/${id}`, updatedTenant)
 
-export const deleteTenant = (id) => API.delete(`$tenants/${id}`); 
+export const deleteTenant = (id) => API.delete(`/tenants/${id}`); 
 
 export const signIn = (formData) => API.post("/users/signin", formData)   
-
-
 
 
 

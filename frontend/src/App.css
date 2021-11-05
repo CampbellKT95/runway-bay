@@ -7,3 +7,19 @@ body {
   background-size: cover;
   text-align: center;
 }
+
+.contact {
+  padding-top: 50px;
+}
+
+.contact h4 {
+  font-size: 1.25rem;
+}
+
+.mail {
+  padding-right: 5px;
+}
+
+.github {
+  padding-left: 5px;
+}

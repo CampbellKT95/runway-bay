@@ -28,6 +28,21 @@
   font-size: 1.25rem;
 }
 
+.btn-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.lease-file {
+  color: #cc5577;
+  width: 80%;
+  height: 50%;
+  margin-left: 20%;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .tenant-btn {
   width: 5rem;
   height: auto;

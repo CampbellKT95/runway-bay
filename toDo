@@ -1,13 +1,23 @@
+MAILER SUCCESSFUL, WILL NOW NEED TO FECTH DATA FROM /TENANTS TO ENABLE CLIENT TO SEND WHATEVER HE TYPES
+
+
+Create button should link us back to tenants, but currently does not despite <Link> being in place
+
+
 Token is now successfully saved, but I have to refresh to see all tenants once I have been pushed to /tenants
-    I think video covers this issue.
 
 
 ###################
 
 Place Google Auth code in an extra folder & add to .gitignore
 
-Add button to upload lease document for each tenant
-(should also probably add a button on <SingleTenant /> to access it)
+Remove all console logs
+
+Set up auto 45 day email
+
+Set up auto email when rent is due
+
+Set up a memo section in /tenants where Dave can push out important updates
 
 ## FINALE
 

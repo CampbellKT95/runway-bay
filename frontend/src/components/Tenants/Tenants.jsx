@@ -4,6 +4,7 @@ import {useHistory, Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import SingleTenant from "../SingleTenant/index";
 import "./styles.css";
+import Contact from "../Contact/index";
 
 
 const Tenants = ({currentId, setCurrentId, setUser}) => {
@@ -36,6 +37,7 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
                     </div>
                 })}
             </div>
+            <Contact />
         </>
     )
 }

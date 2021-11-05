@@ -1,14 +1,12 @@
 import "./styles.css";
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
 import {GoogleLogin} from "react-google-login";
 import {useDispatch} from "react-redux";
 import {useHistory, useLocation} from "react-router-dom";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import {signin} from "../../actions/auth";
-import EmailIcon from '@mui/icons-material/Email';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
+import Contact from "../Contact/index";
 
 const initialState = {username: "", password: ""}
 
@@ -16,7 +14,7 @@ const Auth = ({user, setUser}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    dotenv.config();
+    // dotenv.config();
 
     useEffect(() => {
         const token = user?.token;
@@ -93,7 +91,9 @@ const Auth = ({user, setUser}) => {
 
                 </form>
 
-                <div className="contact">
+                <Contact />
+
+                {/* <div className="contact">
                     <h4>Kadin Campbell</h4>
                     <a href="mailto:ktcampbelldevelopment@gmail.com" className="mail">
                         <EmailIcon className="mail-icon" />
@@ -101,7 +101,7 @@ const Auth = ({user, setUser}) => {
                     <a href="https://github.com/CampbellKT95" className="github">
                         <GitHubIcon className="github-icon" />
                     </a>
-                </div>
+                </div> */}
             </section>
         </>
     )

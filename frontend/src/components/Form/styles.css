@@ -3,8 +3,8 @@ body {
 }
 
 input {
-  border-radius: 5px;
   border: none;
+  border-bottom: 1px solid black;
   width: 15rem;
   height: 3rem;
   font-size: 1.5rem;
@@ -70,6 +70,35 @@ textarea {
   grid-gap: 5px;
 }
 
+.name-label {
+  position: absolute;
+  margin-left: 12rem;
+}
+
+.company-label {
+  position: absolute;
+  margin-top: 3.5rem;
+  margin-left: 11rem;
+}
+
+.phone-label {
+  position: absolute;
+  margin-top: 7rem;
+  margin-left: 12rem;
+}
+
+.cell-label {
+  position: absolute;
+  margin-top: 10.5rem;
+  margin-left: 13rem;
+}
+
+.email-label {
+  position: absolute;
+  margin-top: 14rem;
+  margin-left: 12.5rem;
+}
+
 .address-info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -79,6 +108,46 @@ textarea {
   grid-gap: 5px;
   margin: auto;
   margin-top: 0;
+}
+
+.address-1-label {
+  position: absolute;
+  margin-left: 10.5rem;
+}
+
+.address-2-label {
+  position: absolute;
+  margin-left: 26rem;
+}
+
+.city-label {
+  position: absolute;
+  margin-left: 13rem;
+  margin-top: 3.5rem;
+}
+
+.state-label {
+  position: absolute;
+  margin-left: 28rem;
+  margin-top: 3.5rem;
+}
+
+.zip-label {
+  position: absolute;
+  margin-left: 13.3rem;
+  margin-top: 7rem;
+}
+
+.building-label {
+  position: absolute;
+  margin-left: 27rem;
+  margin-top: 7rem;
+}
+
+.unit-label {
+  position: absolute;
+  margin-left: 13rem;
+  margin-top: 10.5rem;
 }
 
 .lease-info {
@@ -91,6 +160,64 @@ textarea {
   grid-gap: 5px;
 }
 
+.start-date-label {
+  position: absolute;
+  margin-left: 10.3rem;
+}
+
+.end-date-label {
+  position: absolute;
+  margin-left: 26.3rem;
+}
+
+.lease-length-label {
+  position: absolute;
+  margin-left: 9rem;
+  margin-top: 3.5rem;
+}
+
+.signing-date-label {
+  position: absolute;
+  margin-left: 24.8rem;
+  margin-top: 3.5rem;
+}
+
+.signing-payment-label {
+  position: absolute;
+  margin-left: 7.5rem;
+  margin-top: 7rem;
+}
+
+.rent-due-label {
+  position: absolute;
+  margin-left: 26.3rem;
+  margin-top: 7rem;
+}
+
+.monthly-amt-label {
+  position: absolute;
+  margin-left: 7.3rem;
+  margin-top: 10.5rem;
+}
+
+.sales-tax-label {
+  position: absolute;
+  margin-left: 26rem;
+  margin-top: 10.5rem;
+}
+
+.subtotal-label {
+  position: absolute;
+  margin-left: 11rem;
+  margin-top: 14rem;
+}
+
+.total-paid-label {
+  position: absolute;
+  margin-left: 26rem;
+  margin-top: 14rem;
+}
+
 .deposit-info {
   display: grid;
   margin: auto;
@@ -98,7 +225,18 @@ textarea {
 
   grid-column: 3;
   grid-row: 2;
-  grid-gap: 5px;
+  grid-gap: 2px;
+}
+
+.security-amount-label {
+  position: absolute;
+  margin-left: 10.5rem;
+}
+
+.date-security-received-label {
+  position: absolute;
+  margin-left: 25rem;
+  margin-top: -6px;
 }
 
 .deposit-info label {
@@ -113,6 +251,11 @@ textarea {
 .comments {
   border-radius: 5px;
   font-size: 1.5rem;
+}
+
+.comments-label {
+  position: absolute;
+  margin-left: 17rem;
 }
 
 .subtotal {
