@@ -20,7 +20,6 @@ app.get("/", (req, res) => {
     res.send("Loading...")
 })
 
-//process.env to acces .env file info
 const port = process.env.PORT || 5000;
 
 mongoose.connect(process.env.TENANTS_DB_URI)

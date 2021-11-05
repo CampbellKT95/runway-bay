@@ -1,4 +1,13 @@
-MAILER SUCCESSFUL, WILL NOW NEED TO FECTH DATA FROM /TENANTS TO ENABLE CLIENT TO SEND WHATEVER HE TYPES
+MAILER SUCCESSFUL, WILL NOW NEED TO FECTH DATA FROM /TENANTS TO ENABLE CLIENT TO SEND WHATEVER HE TYPES INTO MEMO
+
+    Will need to bring dispatch into tenants, and dispatch memo to backend.
+
+
+
+
+
+ALSO HAVE SCHEDULED MAILER SET UP
+    ONCE I HAVE TENANT START DATES, CAN MANUALLY SET UP SCHEDULED EMAIL FOR EACH ONE
 
 
 Create button should link us back to tenants, but currently does not despite <Link> being in place
@@ -9,13 +18,7 @@ Token is now successfully saved, but I have to refresh to see all tenants once I
 
 ###################
 
-Place Google Auth code in an extra folder & add to .gitignore
-
 Remove all console logs
-
-Set up auto 45 day email
-
-Set up auto email when rent is due
 
 Set up a memo section in /tenants where Dave can push out important updates
 

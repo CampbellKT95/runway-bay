@@ -74,12 +74,9 @@ const Form = ({currentId, setCurrentId}) => {
 
         if (currentId) {
             dispatch(updateTenant(currentId, tenantData));
-            console.log("tenant updated");
         } else {
             dispatch(createTenant(tenantData));
-            console.log("tenant created");
-        }
-        
+        } 
         clear();
     }
 
@@ -259,19 +256,21 @@ const Form = ({currentId, setCurrentId}) => {
 
                     <label for="certificate-of-liability">Certificate of Liability</label>
                 </div>
-                <div>
+            </div>
+            <div className="upload-create">
+                <div className="file">
                     <FileBase 
                         type="file"
                         multiple={false}
                         onDone={({base64}) => setTenantData({ ...tenantData, leaseFile: base64})}
+                        
                     />
                 </div>
-
-            </div>
-            <div>
-                <Link to="/tenants"><button className="btn" type="submit" onClick={handleSubmit}>
-                    {`${currentId ? "Edit" : "Create"}`}
-                </button></Link>
+                <div>
+                    <Link to="/tenants"><button className="btn" type="submit" onClick={handleSubmit}>
+                        {`${currentId ? "Edit" : "Create"}`}
+                    </button></Link>
+                </div>
             </div>
         </form>
         <Contact />

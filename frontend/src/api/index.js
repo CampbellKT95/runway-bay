@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({baseURL: "http://localhost:5000" })
+// for production: "https://runway-bay.herokuapp.com"
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem("profile")) {
@@ -18,17 +19,3 @@ export const updateTenant = (id, updatedTenant) => API.patch(`/tenants/${id}`, u
 export const deleteTenant = (id) => API.delete(`/tenants/${id}`); 
 
 export const signIn = (formData) => API.post("/users/signin", formData)   
-
-
-
-// const url = "http://localhost:5000/tenants";
-// "https://runway-bay.herokuapp.com/tenants"
-// "http://localhost:5000/tenants";
-
-// export const fetchTenants = () => axios.get(url);
-
-// export const createTenant = (newTenant) => axios.post(url, newTenant);
-
-// export const updateTenant = (id, updatedTenant) => axios.patch(`${url}/${id}`, updatedTenant)
-
-// export const deleteTenant = (id) => axios.delete(`${url}/${id}`); 

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import {useHistory, Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import SingleTenant from "../SingleTenant/index";
 import "./styles.css";
 import Contact from "../Contact/index";
-
 
 const Tenants = ({currentId, setCurrentId, setUser}) => {
 
@@ -20,6 +19,8 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
         history.push("/");
         setUser(null);
   }
+
+  const [memo, setMemo] = useState("");
 
     return (
         <>
@@ -36,6 +37,10 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
                         />
                     </div>
                 })}
+            </div>
+            <div className="memo-container">
+                <textarea value={memo} className="memo" cols="30" rows="4" placeholder="Message Tenants" onChange={(e) => setMemo(e.target.value)}/>
+                <button className="send-btn">Send</button>
             </div>
             <Contact />
         </>

@@ -1,11 +1,8 @@
 import "./styles.css";
 import React, {useState, useEffect} from "react";
-import {GoogleLogin} from "react-google-login";
 import {useDispatch} from "react-redux";
 import {useHistory, useLocation} from "react-router-dom";
-// import dotenv from "dotenv";
 import {signin} from "../../actions/auth";
-import GoogleIcon from '@mui/icons-material/Google';
 import Contact from "../Contact/index";
 
 const initialState = {username: "", password: ""}
@@ -14,7 +11,6 @@ const Auth = ({user, setUser}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    // dotenv.config();
 
     useEffect(() => {
         const token = user?.token;
@@ -39,28 +35,6 @@ const Auth = ({user, setUser}) => {
         dispatch(signin(formData, history))
     }
 
-    const googleSuccess = async (res) => {
-
-        const result = res?.profileObj;
-        const token = res?.tokenId;
-
-        try {
-            dispatch({type: "AUTH", data: {result, token}});
-
-            history.push("/tenants")
-
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
-
-    const googleFailure = (error) => {
-        console.log("Google Sign In unsuccessful. Please try again.");
-        console.log(error);
-    }
-
-
     return (
         <>
             <section className="login-background">
@@ -73,35 +47,8 @@ const Auth = ({user, setUser}) => {
                     />
 
                     <button type="submit">Login</button>
-
-                    <GoogleLogin 
-                        clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                        
-                        render={(renderProps) => (
-                            <button className="google-btn" 
-                                onClick={renderProps.onClick} 
-                                disabled={renderProps.disabled}>
-                                <GoogleIcon /> Sign On
-                            </button>
-                        )}
-                        onSuccess={googleSuccess}
-                        onFailure={googleFailure}
-                        cookiePolicy="single_host_origin"
-                    />
-
                 </form>
-
                 <Contact />
-
-                {/* <div className="contact">
-                    <h4>Kadin Campbell</h4>
-                    <a href="mailto:ktcampbelldevelopment@gmail.com" className="mail">
-                        <EmailIcon className="mail-icon" />
-                    </a>
-                    <a href="https://github.com/CampbellKT95" className="github">
-                        <GitHubIcon className="github-icon" />
-                    </a>
-                </div> */}
             </section>
         </>
     )

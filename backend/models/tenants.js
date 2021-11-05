@@ -1,4 +1,3 @@
-import { Decimal128, Double } from "bson";
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
@@ -136,8 +135,6 @@ const tenantSchema = new Schema ({
     
 });
 
-//parameter is singular of collections name
 const Tenant = mongoose.model("Tenant", tenantSchema);
 
-// module.exports = Tenant;
 export default Tenant;

@@ -4,11 +4,6 @@ import {auth} from "../middleware/auth.js";
 
 const router = express.Router();
 
-// router.get("/", getTenants);
-// router.post("/", createTenant)
-// router.patch("/:id", updateTenant)
-// router.delete("/:id", deleteTenant)
-
 router.get("/", auth, getTenants);
 router.post("/", auth, createTenant)
 router.patch("/:id", auth, updateTenant)

@@ -33,7 +33,24 @@ textarea {
   cursor: pointer;
 }
 
+.form-container {
+  display: grid;
+  grid-template-columns: 0.55fr 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr 0.2fr;
+  grid-gap: 20px;
+
+  margin-top: 3%;
+}
+
+.upload-create {
+  display: grid;
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-rows: repeat(2, 1fr);
+}
+
 .btn {
+  display: inline-block;
   width: 10rem;
   height: 3rem;
   border: none;
@@ -42,22 +59,16 @@ textarea {
   background-color: black;
   color: white;
 
-  grid-column: 1;
-  grid-row: 3;
+  grid-row: 2;
   margin: auto;
-  margin-top: 13%;
   font-size: 1.5rem;
 
   cursor: pointer;
 }
 
-.form-container {
-  display: grid;
-  grid-template-columns: 0.55fr 1fr 1fr;
-  grid-template-rows: 1fr 0.5fr;
-  grid-gap: 20px;
-
-  margin-top: 3%;
+.file {
+  display: inline-block;
+  grid-row: 1;
 }
 
 .personal-info {

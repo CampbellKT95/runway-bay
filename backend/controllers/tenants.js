@@ -5,8 +5,6 @@ export const getTenants = async (req, res) => {
     try {
         const tenants = await Tenant.find();
 
-        console.log(tenants);
-
         res.status(200).json(tenants);
 
     } catch (error) {
@@ -15,16 +13,13 @@ export const getTenants = async (req, res) => {
 };
 
 export const createTenant = (req, res) => {
-    //with posts request, you have access to req.body
+
     const newTenantData = req.body;
 
     const newTenant = new Tenant(newTenantData);
 
-    console.log(newTenant);
-
     try {
          newTenant.save();
-         console.log("Successfully saved new tenant")
 
         res.status(201).json(newTenant);
 
@@ -35,7 +30,6 @@ export const createTenant = (req, res) => {
     }
 }
 
-//the parameter comes from the dynamic url (tenants/:id). rename id prop to _id
 export const updateTenant = async (req, res) => {
     const {id : _id} = req.params;
     const tenant = req.body;
@@ -52,8 +46,6 @@ export const updateTenant = async (req, res) => {
 
 export const deleteTenant = async (req, res) => {
     const {id} = req.params;
-    console.log("req", req)
-    console.log("id", id)
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send("No tenant with that id")
