@@ -1,6 +1,8 @@
 # SET UP SCHEDULER(), EXPORT JUST BELOW SENDMAIL();
 
-    ONCE I HAVE TENANT START DATES, CAN MANUALLY SET UP SCHEDULED EMAIL FOR EACH ONE
+    ONCE I HAVE TENANT START DATES, CAN MANUALLY SET UP SCHEDULED EMAIL FOR EACH ONE, MAY NOT NEED TO INCLUDE A WAY TO AUTOMATE FOR CLIENT
+
+    Make tenants email a .env variable
 
 ##########################
 Create button should link us back to tenants, but currently does not despite <Link> being in place

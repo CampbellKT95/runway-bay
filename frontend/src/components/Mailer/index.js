@@ -29,7 +29,7 @@ const Mailer = () => {
                 </button>
             </form>
             <Link to="/tenants">
-                <button>Back</button>
+                <button className="back-btn">Back</button>
             </Link>
             <Contact />
         </>

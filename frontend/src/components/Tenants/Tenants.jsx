@@ -45,14 +45,8 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
                 })}
             </div>
             <Link to="/mailer">
-                <button>Memo</button>
+                <button className="tenants-btn">Memo</button>
             </Link>
-            {/* <form className="memo-container" onSubmit={transferMemo}>
-                <textarea value={memo} className="memo" cols="30" rows="4" placeholder="Message Tenants" onChange={(e) => setMemo(e.target.value)}/>
-                <button className="send-btn" type="submit">
-                    Send
-                </button>
-            </form> */}
             <Contact />
         </>
     )

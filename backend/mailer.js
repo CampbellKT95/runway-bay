@@ -14,7 +14,7 @@ const oAuth2Client = new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECR
 
 oAuth2Client.setCredentials({refresh_token: REFERSH_TOKEN});
 
-async function sendMail(memo) {
+export async function sendMail(memo) {
     try {
         const accessToken = await oAuth2Client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -45,16 +45,16 @@ async function sendMail(memo) {
     }
 }
 
-export default sendMail;
-
 //https://www.npmjs.com/package/node-cron
 //each star, from left=>right: second, minute, hour, day of month, month, day of week
-// cron.schedule("* * * * * *", () => {
-//   sendMail()
-//     .then(result => console.log("email sent", result))
-//     .catch(error => console.log(error.message))  
-// })
+export async const scheduleEmail = () => {
+    //to be edited in the future. Will also need to ensure that the function is sent to the correct tenant.
+    const reminder = "Your lease expires in 45 days."
 
-// sendMail()
-// .then(result => console.log("email sent", result))
-// .catch(error => console.log(error.message)) 
+    cron.schedule("* * * * * *", () => {
+        sendMail(reminder)
+            .then(result => console.log("email sent", result))
+            .catch(error => console.log(error.message))  
+    })
+}
+
