@@ -58,3 +58,5 @@ export const deleteTenant = async (req, res) => {
 
     }
 }
+
+

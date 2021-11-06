@@ -18,4 +18,8 @@ export const updateTenant = (id, updatedTenant) => API.patch(`/tenants/${id}`, u
 
 export const deleteTenant = (id) => API.delete(`/tenants/${id}`); 
 
-export const signIn = (formData) => API.post("/users/signin", formData)   
+export const signIn = (formData) => API.post("/users/signin", formData);
+
+//
+export const memoAPI = (memo) => API.post("/mailer", memo);
+//

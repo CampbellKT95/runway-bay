@@ -3,6 +3,9 @@ import React, {useEffect, useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from "./components/Form/index.jsx";
 import Auth from './components/Auth/index.jsx';
+//
+import Mailer from "./components/Mailer/index";
+//
 import {useDispatch} from "react-redux";
 import {getTenants} from "./actions/tenants";
 import Tenants from "./components/Tenants/Tenants";
@@ -31,6 +34,10 @@ function App() {
 
         <Route exact path="/form">
           <Form currentId={currentId} setCurrentId={setCurrentId}/>
+        </Route>
+
+        <Route exact path="/mailer">
+            <Mailer />
         </Route>
 
       </Switch>
