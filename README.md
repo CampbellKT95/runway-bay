@@ -41,7 +41,7 @@ https://runway-bay.netlify.app/
 
 # DEPENDENCIES
 
-Frontend:
+_Frontend_:
 
 - @emotion/react
 - @emotion/styled
@@ -58,7 +58,7 @@ Frontend:
 - react-scripts
 - redux-thunk
 
-Backend:
+_Backend_:
 
 - bcryptjs
 - cors
