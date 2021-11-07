@@ -20,6 +20,7 @@ export const deleteTenant = (id) => API.delete(`/tenants/${id}`);
 
 export const signIn = (formData) => API.post("/users/signin", formData);
 
-//
 export const memoAPI = (memo) => API.post("/mailer", memo);
-//
+
+// export const scheduleEmail = (tenant) => API.post("/tenants", tenant);
+

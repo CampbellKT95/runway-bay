@@ -10,4 +10,8 @@ router.post("/", auth, createTenant)
 router.patch("/:id", auth, updateTenant)
 router.delete("/:id", auth, deleteTenant)
 
+// //
+// router.post("/", auth, scheduleReminder)
+// //
+
 export default router;

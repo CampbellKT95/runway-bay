@@ -59,4 +59,9 @@ export const deleteTenant = async (req, res) => {
     }
 }
 
+// export const scheduleReminder = async (req, res) => {
+//     console.log(req.body);
+
+// }
+
 

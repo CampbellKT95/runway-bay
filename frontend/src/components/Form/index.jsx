@@ -69,13 +69,17 @@ const Form = ({currentId, setCurrentId}) => {
         }
     }, [tenant])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
 
         if (currentId) {
             dispatch(updateTenant(currentId, tenantData));
+
         } else {
             dispatch(createTenant(tenantData));
+
+            // //
+            // dispatch(scheduleReminder(tenantData.lease_details.start_date, tenantData.lease_details.end_date));
+            // //
         } 
         clear();
     }

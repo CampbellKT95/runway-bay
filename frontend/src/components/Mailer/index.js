@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {sendMemo} from "../../actions/mailer";
@@ -10,10 +9,9 @@ const Mailer = () => {
 
     const dispatch = useDispatch();
 
-  const [memo, setMemo] = useState("");
+    const [memo, setMemo] = useState("");
 
-  const transferMemo = (e) => {
-    e.preventDefault();
+  const transferMemo = () => {
     dispatch(sendMemo({memo: memo}));
     setMemo("")
   }
@@ -24,9 +22,9 @@ const Mailer = () => {
 
             <form className="memo-container" onSubmit={transferMemo}>
                 <textarea value={memo} className="memo" cols="30" rows="4" placeholder="Message Tenants" onChange={(e) => setMemo(e.target.value)}/>
-                <button className="send-btn" type="submit">
+                <Link to="/tenants" className="send-link"><button className="send-btn" type="submit">
                     Send
-                </button>
+                </button></Link>
             </form>
             <Link to="/tenants">
                 <button className="back-btn">Back</button>

@@ -7,3 +7,4 @@ export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 
 export const MEMO = "MEMO";
+export const SCHEDULE = "SCHEDULE";

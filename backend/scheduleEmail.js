@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import cron from "node-cron";
 import {google} from "googleapis";
 import dotenv from "dotenv";
 
@@ -13,7 +14,7 @@ const oAuth2Client = new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECR
 
 oAuth2Client.setCredentials({refresh_token: REFERSH_TOKEN});
 
-export async function sendMail(memo) {
+export async function sendMail(emailContent) {
     try {
         const accessToken = await oAuth2Client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -30,10 +31,10 @@ export async function sendMail(memo) {
 
         const mailOptions = {
             from: "campbellkt2013@gmail.com",
-            to: "campbellkt2013@gmail.com",
-            subject: "Testing Mailer",
-            text: memo,
-            html: `<h1>${memo}</h1>`
+            to: "dp8747@aol.com",
+            subject: "Scheduled Lease Reminder",
+            text: emailContent,
+            html: `<h1>${emailContent}</h1>`
         };
 
         const result = await transport.sendMail(mailOptions);
@@ -42,5 +43,18 @@ export async function sendMail(memo) {
     } catch (error) {
         return error;
     }
-};
+}
+
+// https://www.npmjs.com/package/node-cron
+// each star, from left=>right: second, minute, hour, day of month, month, day of week
+export const scheduleEmail = () => {
+
+    const reminder = "Tenant: -- lease expires in 45 days"
+
+    cron.schedule("* * * * * *", () => {
+        sendMail(reminder)
+            .then(result => console.log("reminder set", result))
+            .catch(error => console.log(error.message))  
+    })
+}
 

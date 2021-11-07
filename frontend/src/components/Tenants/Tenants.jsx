@@ -20,14 +20,6 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
         setUser(null);
   }
 
-  const [memo, setMemo] = useState("");
-
-  const transferMemo = (e) => {
-        e.preventDefault();
-      dispatch(sendMemo(memo));
-      setMemo("")
-  }
-
     return (
         <>
             <h1 className="tenants-title">All Tenants</h1>

@@ -1,18 +1,23 @@
-# SET UP SCHEDULER(), EXPORT JUST BELOW SENDMAIL();
+Add images of each component to readme features
 
-    ONCE I HAVE TENANT START DATES, CAN MANUALLY SET UP SCHEDULED EMAIL FOR EACH ONE, MAY NOT NEED TO INCLUDE A WAY TO AUTOMATE FOR CLIENT
+# Last Things Before Re-Deployment
 
-    Make tenants email a .env variable
-
-##########################
-Create button should link us back to tenants, but currently does not despite <Link> being in place
-
-Token is now successfully saved, but I have to refresh to see all tenants once I have been pushed to /tenants
-
-#########################
-
-Remove all console logs
+1. Make all tenants email a .env variable & make them the recepients of memo
+2. Set up manual scheduler to email Dave 45 days before each tenant's lease expiration
 
 ## FINALE
 
 Re-deply backend to heroku and frontend to netlify
+
+# Idea for scheduling emails
+
+    Should probably put in controllers/tenants since I need access to dates already provided
+
+    Should make a seperate, but similar, sendMail() function specifically to be used within scheduleEmail()
+
+    a. Once I have start/end date, can use equation to calculate the number of days between them & subtract 45 to schedule the 45 day reminder
+        const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+        const startDate = new Date(2008, 1, 12);
+        const endDate = new Date(2008, 1, 22);
+
+        const diffDays = Math.ceil(Math.abs((startDate - endDate) / oneDay));

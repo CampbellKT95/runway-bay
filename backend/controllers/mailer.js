@@ -1,10 +1,8 @@
-import {sendMail, scheduleEmail} from "../mailer.js";
+import {sendMail} from "../mailer.js";
 
 export const sendMemo = async (req, res) => {
     try {
         const receivedMemo = req.body
-
-        console.log("controllers", receivedMemo.memo)
 
         sendMail(receivedMemo.memo);
         
@@ -16,10 +14,10 @@ export const sendMemo = async (req, res) => {
 
 }
 
-export const scheduleEmail = async (req, res) => {
-    try {
+// export const setEmail = async (req, res) => {
+//     try {
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }

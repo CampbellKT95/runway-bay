@@ -44,3 +44,15 @@ export const deleteTenant = (id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+// //
+// export const scheduleReminder = (tenant) => async (dispatch) => {
+//     try {
+//         await api.scheduleEmail(tenant);
+
+//         dispatch({type: SCHEDULE, payload: tenant});
+//     } catch (error) {
+//         console.log(error)
+//     }
+// };
+// //
