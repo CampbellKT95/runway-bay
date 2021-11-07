@@ -43,7 +43,7 @@ const Form = ({currentId, setCurrentId}) => {
                 signing_payment: null,
             },
 
-            due_day: "",
+            due_day: null,
             monthly_amt: null,
             sales_tax: null,
             subtotal: null,
@@ -120,7 +120,7 @@ const Form = ({currentId, setCurrentId}) => {
                 signing_payment: 0,
             },
 
-            due_day: "",
+            due_day: 0,
             monthly_amt: 0,
             sales_tax: 0,
             subtotal: 0,
@@ -197,10 +197,10 @@ const Form = ({currentId, setCurrentId}) => {
                 <input value={tenantData.lease_details.start_date} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, start_date: e.target.value}})}}/>
 
                 <label className="end-date-label">End Date</label>
-                <input value={tenantData.lease_details.end_date} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, end_date: e.target.value}})}}/>
+                <input value={tenantData.lease_details.end_date} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, end_date: e.target.value}})}}/>
 
                 <label className="lease-length-label">Lease Length</label>
-                <input value={tenantData.lease_details.lease_length} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, lease_length: e.target.value}})}}/>
+                <input value={tenantData.lease_details.lease_length} placeholder="# of Months" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, lease_length: e.target.value}})}}/>
 
                 <label className="signing-date-label">Signing Date</label>
                 <input value={tenantData.lease_details.signing.signing_date} placeholder="mm dd yyyy" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_date: e.target.value}}})}}/>
@@ -209,7 +209,8 @@ const Form = ({currentId, setCurrentId}) => {
                 <input value={tenantData.lease_details.signing.signing_payment} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, signing: {...tenantData.lease_details.signing, signing_payment: e.target.value}}})}}/>
    
                 <label className="rent-due-label">Rent Due</label>
-                <input value={tenantData.lease_details.due_day} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, due_day: e.target.value}})}}/>
+                <input value={tenantData.lease_details.due_day} placeholder="Day of month: 5"
+                onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, due_day: e.target.value}})}}/>
 
                 <label className="monthly-amt-label">Monthly Payment</label>
                 <input value={tenantData.lease_details.monthly_amt} onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, monthly_amt: e.target.value}})}}/>

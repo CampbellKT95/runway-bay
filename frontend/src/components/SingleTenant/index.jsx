@@ -16,7 +16,7 @@ const SingleTenant = ({...props}) => {
         <div className="tenant">
             <h1 className="tenant-name">{receivedProp[0].name}</h1>
 
-            <h4 className="rent">{`Rent: $${receivedProp[0].lease_details.monthly_amt} on 
+            <h4 className="rent">{`Rent: $${receivedProp[0].lease_details.monthly_amt} on the
             ${receivedProp[0].lease_details.due_day}`}</h4>
 
                 {receivedProp[0].location.property.building.map((item) => {

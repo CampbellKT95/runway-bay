@@ -8,12 +8,20 @@ requirements for compiling his tenants' information.
 # FEATURES
 
 - User login and authentication with JWT and bcrypt.
+  ![Login Component](/readme-imgs/login-component.png)
+
 - Create new tenants with user data submitted with redux & redux-thunk.
 - Upload supporting documents with react-file-base64 to mongodb Atlas database.
+  ![Form Component](/readme-imgs/form-component.png)
+
 - All tenants displayed to the user on the home screen.
 - Edit and delete existing tenants from the database.
+  ![Tenants Component](/readme-imgs/tenants-component.png)
+
 - Send out memos to all tenants regarding upcoming events, inspections, etc.
   using nodemailer.
+  ![memo Component](/readme-imgs/memo-component.png)
+
 - Schedule lease-expiration email reminders with node-cron.
 
 # RUNNING THE PROJECT
