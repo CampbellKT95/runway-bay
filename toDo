@@ -1,9 +1,6 @@
-Add images of each component to readme features
 
-# Last Things Before Re-Deployment
-
-1. Make all tenants email a .env variable & make them the recepients of memo
-2. Set up manual scheduler to email Dave 45 days before each tenant's lease expiration
+2. Make all tenants email a .env variable & make them the recepients of memo
+3. Set up manual scheduler to email Dave 45 days before each tenant's lease expiration
 
 ## FINALE
 

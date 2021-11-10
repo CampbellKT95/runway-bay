@@ -227,10 +227,10 @@ const Form = ({currentId, setCurrentId}) => {
 
             <div className="deposit-info">
                 <label className="security-amount-label">Amount</label>
-                <input value={tenantData.lease_details.security.security_amt} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_amt: e.target.value}}})}}/>
+                <input className="deposit-shadow" value={tenantData.lease_details.security.security_amt} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_amt: e.target.value}}})}}/>
 
                 <label className="date-security-received-label">Date Received</label>
-                <input value={tenantData.lease_details.security.security_date_received} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
+                <input className="deposit-shadow" value={tenantData.lease_details.security.security_date_received} placeholder="security" onChange={(e) => {setTenantData({...tenantData, lease_details: {...tenantData.lease_details, security: {...tenantData.lease_details.security, security_date_received: e.target.value}}})}}/>
 
                 <div className="security-check">
                     <input type="checkbox" name="security-deposit"

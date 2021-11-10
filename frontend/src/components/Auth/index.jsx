@@ -2,8 +2,10 @@ import "./styles.css";
 import React, {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory, useLocation} from "react-router-dom";
+import decode from "jwt-decode";
 import {signin} from "../../actions/auth";
 import Contact from "../Contact/index";
+import { LOGOUT } from "../../constants/actionTypes";
 
 const initialState = {username: "", password: ""}
 
@@ -13,7 +15,7 @@ const Auth = ({user, setUser}) => {
     const location = useLocation();
 
     useEffect(() => {
-        const token = user?.token;
+        // const token = user?.token;
 
         setUser(JSON.parse(localStorage.getItem("profile")));
     }, [location])

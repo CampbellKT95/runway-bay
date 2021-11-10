@@ -81,6 +81,10 @@ textarea {
   grid-gap: 5px;
 }
 
+.personal-info input {
+  box-shadow: 1px 1px 1px 1px black;
+}
+
 .name-label {
   position: absolute;
   margin-left: 12rem;
@@ -119,6 +123,10 @@ textarea {
   grid-gap: 5px;
   margin: auto;
   margin-top: 0;
+}
+
+.address-info input {
+  box-shadow: 1px 1px 1px 1px black;
 }
 
 .address-1-label {
@@ -169,6 +177,10 @@ textarea {
   grid-column: 3;
   grid-row: 1;
   grid-gap: 5px;
+}
+
+.lease-info input {
+  box-shadow: 1px 1px 1px 1px black;
 }
 
 .start-date-label {
@@ -239,6 +251,10 @@ textarea {
   grid-gap: 2px;
 }
 
+.deposit-shadow {
+  box-shadow: 1px 1px 1px 1px black;
+}
+
 .security-amount-label {
   position: absolute;
   margin-left: 10.5rem;
@@ -262,6 +278,7 @@ textarea {
 .comments {
   border-radius: 5px;
   font-size: 1.5rem;
+  box-shadow: 1px 1px 2px 2px black;
 }
 
 .comments-label {

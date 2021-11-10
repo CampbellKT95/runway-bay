@@ -30,8 +30,8 @@ const Tenants = ({currentId, setCurrentId, setUser}) => {
             <div className="tenants-container">
                 {tenants.map((tenant) => {
                     return <div>
-                        <SingleTenant key={tenant._id} id={tenant._id} tenant={[tenant]} 
-                            currentId={currentId} setCurrentId={setCurrentId}
+                        <SingleTenant key={tenant._id} id={tenant._id} tenant={[tenant]} currentId={currentId} 
+                        setCurrentId={setCurrentId}
                         />
                     </div>
                 })}

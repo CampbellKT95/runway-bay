@@ -2,7 +2,7 @@ import {sendMail} from "../mailer.js";
 
 export const sendMemo = async (req, res) => {
     try {
-        const receivedMemo = req.body
+        const receivedMemo = req.body;
 
         sendMail(receivedMemo.memo);
         

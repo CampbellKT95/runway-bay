@@ -30,8 +30,8 @@ export async function sendMail(memo) {
 
         const mailOptions = {
             from: "campbellkt2013@gmail.com",
-            to: "campbellkt2013@gmail.com",
-            subject: "Testing Mailer",
+            to: process.env.ALL_TENANTS,
+            subject: "Runway Bay Memo",
             text: memo,
             html: `<h1>${memo}</h1>`
         };
